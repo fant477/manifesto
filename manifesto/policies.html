@@ -1,13 +1,26 @@
 ---
-title: Policies
+title: Policy Areas
 layout: page
 ---
-This is a test page for a new policy layout.
+This is a test page for a new policy layout
 
-<ul>
+{% capture tag_string %}
   {% for policy in site.policies %}
-      <li><a href='{{ policy.url }}'>{{ policy.title }}</a></li>
+    {{policy.tags | join:" "}}
   {% endfor %}
-</ul>
+{% endcapture %}
+
+{% assign tags = tag_string | split:" "%}
+
+{% for policy_tag in tags %}
+  <h2>{{ policy_tag | capitalize }}</h2>
+  <ul>
+    {% for policy in site.policies %}
+      {% if policy.tags contains policy_tag %}
+        <li><a href='{{ policy.url }}'>{{ policy.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}
 
 <a href='https://github.com/openpolitics/manifesto/new/gh-pages/_policies?filename=new_policy.md&value=---%0Atitle: write your policy title here and change the filename above to match%0Atags:%0A  - internet%0A  - delete as applicable%0A---%0AWrite your policy here'>New Policy</a>
