@@ -1,7 +1,18 @@
 name: OpenPolitics
 tagline: An open source plan for the UK. Take control, and create the future you want.
 
-markdown: kramdown
+collections:
+  policies:
+    output: true
+    permalink: /manifesto/policies/:path/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "policies"
+    values:
+      layout: "new_policy"  
 
 exclude: ["vendor"]
 

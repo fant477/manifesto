@@ -1,0 +1,13 @@
+---
+title: Policies
+layout: page
+---
+This is a test page for a new policy layout.
+
+<ul>
+  {% for policy in site.policies %}
+      <li><a href='{{ policy.url }}'>{{ policy.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<a href='https://github.com/openpolitics/manifesto/new/gh-pages/_policies?filename=new_policy.md&value=---%0Atitle: write your policy title here and change the filename above to match%0Atags:%0A  - internet%0A  - delete as applicable%0A---%0AWrite your policy here'>New Policy</a>
