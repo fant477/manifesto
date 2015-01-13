@@ -10,7 +10,7 @@ This is a test page for a new policy layout
   {% endfor %}
 {% endcapture %}
 
-{% assign tags = tag_string | split:" "%}
+{% assign tags = tag_string | split:" " | sort | uniq %}
 
 {% for policy_tag in tags %}
   <h2>{{ policy_tag | capitalize }}</h2>
@@ -23,4 +23,4 @@ This is a test page for a new policy layout
   </ul>
 {% endfor %}
 
-<a href='https://github.com/openpolitics/manifesto/new/gh-pages/_policies?filename=new_policy.md&value=---%0Atitle: write your policy title here and change the filename above to match%0Atags:%0A  - internet%0A  - delete as applicable%0A---%0AWrite your policy here'>New Policy</a>
+<a href='https://github.com/openpolitics/manifesto/new/gh-pages/_policies?filename=new_policy.md&value=---%0Atitle: write your policy title here and change the filename above to match%0Atags:[{{tags|join","}}] (delete as applicable)%0A---%0AWrite your policy here'>New Policy</a>
